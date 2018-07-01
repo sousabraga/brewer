@@ -11,15 +11,14 @@ public class Beer implements Serializable {
 
 	private Long id;
 	
-	@NotBlank
+	@NotBlank(message = "SKU is required")
 	private String sku;
 	
-	@NotBlank 
+	@NotBlank(message = "Name is required") 
 	private String name;
 	
-	@NotBlank
-	@Size(max = 50)
-	private String descricao;
+	@Size(min = 1, max = 50, message = "Description must be between 1 and 50")
+	private String description;
 
 	public Long getId() {
 		return id;
@@ -45,17 +44,17 @@ public class Beer implements Serializable {
 		this.name = name;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("SKU: %s \n Name: %s \n Descrição: %s", sku, name, descricao);
+		return String.format("SKU: %s \n Name: %s \n Descripton: %s", sku, name, description);
 	}
 	
 	@Override

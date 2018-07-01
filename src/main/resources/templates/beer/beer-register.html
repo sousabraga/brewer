@@ -8,18 +8,24 @@
 	</head>
 	
 	<body>
-		<form method="POST">
-			<span th:text="${message}"></span>
+		<form method="POST" th:object="${beer}">
+			<div th:each="error : ${#fields.detailedErrors()}">
+				<span th:text="${error.message}"></span>
+			</div>
 			<br/>
+		
 			<label for="sku">SKU</label>
-			<input type="text" id="sku" name="sku">
+			<input type="text" id="sku" th:field="*{sku}">
 			<br/>
+		
 			<label for="name">Name</label>
-			<input type="text" id="name" name="name">
+			<input type="text" id="name" th:field="*{name}">
 			<br/>
+		
 			<label for="description">Description</label>
-			<textarea id="description" name="description" rows="5" cols="10"></textarea> 
+			<textarea id="description" rows="5" cols="10" th:field="*{description}"></textarea> 
 			<br/>
+		
 			<input type="submit" value="Save">
 		</form>
 	</body>

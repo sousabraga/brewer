@@ -17,7 +17,7 @@ import com.algaworks.brewer.model.Beer;
 public class BeerController {
 
 	@GetMapping("/new")
-	public ModelAndView newBeer(ModelAndView modelAndView) {
+	public ModelAndView newBeer(Beer beer, ModelAndView modelAndView) {
 		modelAndView.setViewName("beer/beer-register");
 		
 		return modelAndView;
@@ -26,10 +26,7 @@ public class BeerController {
 	@PostMapping("/new")
 	public ModelAndView saveBeer(@Valid Beer beer, BindingResult bindingResult, ModelAndView modelAndView, RedirectAttributes redirectAttributes) {		
 		if (bindingResult.hasErrors()) {
-			modelAndView.setViewName("beer/beer-register");
-			modelAndView.addObject("message", "Errors detected!");
-			
-			return modelAndView;
+			return newBeer(beer, modelAndView);
 		}
 		
 		// TODO save the beeer
