@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	
 	<head>
 		<meta charset="UTF-8">
 		<title>Beer Register</title>
 	</head>
+	
 	<body>
 		<form method="POST">
+			<span th:text="${message}"></span>
+			<br/>
 			<label for="sku">SKU</label>
 			<input type="text" id="sku" name="sku">
-			
+			<br/>
 			<label for="name">Name</label>
 			<input type="text" id="name" name="name">
-			
+			<br/>
+			<label for="description">Description</label>
+			<textarea id="description" name="description" rows="5" cols="10"></textarea> 
+			<br/>
 			<input type="submit" value="Save">
 		</form>
 	</body>
+	
 </html>

@@ -3,6 +3,7 @@ package com.algaworks.brewer.model;
 import java.io.Serializable;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class Beer implements Serializable {
 
@@ -15,6 +16,10 @@ public class Beer implements Serializable {
 	
 	@NotBlank 
 	private String name;
+	
+	@NotBlank
+	@Size(max = 50)
+	private String descricao;
 
 	public Long getId() {
 		return id;
@@ -40,9 +45,17 @@ public class Beer implements Serializable {
 		this.name = name;
 	}
 
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	@Override
 	public String toString() {
-		return String.format("SKU: %s Name: %s", sku, name);
+		return String.format("SKU: %s \n Name: %s \n Descrição: %s", sku, name, descricao);
 	}
 	
 	@Override
