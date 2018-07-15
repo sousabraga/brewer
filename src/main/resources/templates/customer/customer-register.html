@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.dz/thymeleaf/layout"
+	layout:decorator="layout/brewer-layout">
+	
+	<head>
+		<title>Customer Register</title>
+	</head>
+
+	<body>
+		<section layout:fragment="content">
+			<div class="page-header">
+				<div class="container-fluid">
+					<h1>Customer Register</h1>
+				</div>
+			</div>
+		
+			<div class="container-fluid">
+				<!-- <div class="alert  alert-danger  alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<i class="fa  fa-exclamation-circle"></i> Já existe um produto com o nome informado.
+				</div> -->
+	
+				<form method="POST" th:object="${beer}" class="form-vertical  js-form-loading">
+					<div class="row">
+						<div class="form-group col-sm-12">
+							<label for="name">Name</label>
+							<input id="name" type="text" class="form-control"/>
+						</div> 
+					</div>
+					<div class="row">
+						<div class="form-group col-lg-4 col-sm-6">
+							<label for="type">Kind of person</label>
+							<div>
+								<div class="radio radio-inline">
+									<input type="radio" name="type">
+									<label>Physical</label>
+								</div>
+								<div class="radio radio-inline">
+									<input type="radio" name="type">
+									<label>Legal Entity</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group col-lg-8 col-sm-6">
+							<label for="document-number">CPF/CNPJ</label>
+							<input id="document-number" type="text" class="form-control"/>
+						</div> 
+					</div>
+					<div class="row">
+						<div class="form-group col-lg-4 col-sm-6">
+							<label for="phone-number">Phone Number</label>
+							<input id="phone-number" type="text" class="form-control"/>
+						</div> 
+						<div class="form-group col-lg-8 col-sm-6">
+							<label for="email">E-mail</label>
+							<input id="email" type="email" class="form-control"/>
+						</div> 
+					</div>
+					<div class="row">
+						<div class="form-group col-lg-4 col-sm-6">
+							<label for="public-place">Public place</label>
+							<input id="public-place" type="text" class="form-control"/>
+						</div> 
+						<div class="form-group col-lg-4 col-sm-6">
+							<label for="number">Number</label>
+							<input id="number" type="text" class="form-control"/>
+						</div> 
+						<div class="form-group col-lg-4 col-sm-6">
+							<label for="complement">Complement</label>
+							<input id="complement" type="text" class="form-control"/>
+						</div> 
+					</div>
+					<div class="row">
+						<div class="form-group col-lg-4 col-sm-6">
+							<label for="zip-code">Zip Code</label>
+							<input id="zip-code" type="text" class="form-control"/>
+						</div> 
+						<div class="form-group col-lg-4 col-sm-6">
+							<label for="state">State</label>
+							<select id="state" class="form-control">
+								<option value="">Select State</option>
+							</select>
+						</div> 
+						<div class="form-group col-lg-4 col-sm-6">
+							<label for="city">City</label>
+							<select id="city" class="form-control">
+								<option value="">Select City</option>
+							</select>
+						</div> 
+					</div>
+					
+					<div class="form-group">
+						<button class="btn btn-primary" type="submit">Save</button>
+					</div>
+				</form>
+			</div>
+		</section>
+	</body>
+
+</html>

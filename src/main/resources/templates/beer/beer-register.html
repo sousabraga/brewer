@@ -4,118 +4,123 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.dz/thymeleaf/layout"
 	layout:decorator="layout/brewer-layout">
-
-	<section layout:fragment="content">
-
-		<div class="page-header">
-			<div class="container-fluid">
-				<h1>Beer Register</h1>
-			</div>
-		</div>
-
-		<div class="container-fluid">
-
-			<!-- <div class="alert  alert-danger  alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<i class="fa  fa-exclamation-circle"></i> Já existe um produto com o nome informado.
-			</div> -->
-
-			<form method="POST" th:object="${beer}" class="form-vertical  js-form-loading">
-		
-				<div class="row">
-					<div class="form-group col-sm-2">
-						<label for="sku">SKU</label>
-						<input id="sku" type="text" class="form-control"/>
-					</div> 
-					
-					<div class="form-group col-sm-10">
-						<label for="name">Name</label>
-						<input id="name" type="text" class="form-control"/>
-					</div>
-				</div>
-		
-				<div class="form-group">
-					<label for="description">Description</label>
-					<textarea id="description" rows="3" class="form-control"></textarea>
-				</div>
-
-				<div class="row">
-					<div class="form-group col-sm-3">
-						<label for="style">Style</label>
-						<div class="bw-field-action">
-							<select id="style" class="form-control">
-								<option value="">Select style</option>
-							</select>
-							
-							<div class="bw-field-action-icon">
-								<a href="#" data-toggle="modal" data-target="#style-modal">
-									<i class="glyphicon glyphicon-plus-sign bw-glyphicon-large"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="form-group col-sm-3">
-						<label for="flavor">Flavor</label>
-						<select id="flavor" class="form-control">
-							<option value="">Select flavor</option>
-						</select>
-					</div>
-					
-					<div class="form-group col-sm-3">
-						<label for="alcohol-content">Alcohol content</label>
-						<div class="input-group"> 
-							<input id="alcohol-content" type="text" class="form-control js-decimal"/>
-							<div class="input-group-addon">%</div>
-						</div>
-					</div>
-					
-					<div class="form-group col-lg-3 col-sm-6">
-						<label for="origin">Origin</label>
-						<div>
-							<div class="radio radio-inline">
-								<input type="radio" name="origin">
-								<label>National</label>
-							</div>
-							<div class="radio radio-inline">
-								<input type="radio" name="origin">
-								<label>International</label>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="form-group col-sm-3">
-						<label for="price">Price</label>
-						<div class="input-group"> 
-							<div class="input-group-addon">$</div>
-							<input id="price" type="text" class="form-control js-decimal"/>
-						</div>
-					</div>
-					
-					<div class="form-group col-sm-3">
-						<label for="commission">Commission</label>
-						<div class="input-group"> 
-							<input id="commission" type="text" class="form-control js-decimal"/>
-							<div class="input-group-addon">%</div>
-						</div>
-					</div>
-					
-					<div class="form-group col-sm-3">
-						<label for="stock">Stock</label>
-						<input id="stock" type="text" class="form-control js-plain"/>
-					</div> 
-				</div>
-				
-				<div class="form-group">
-					<button class="btn  btn-primary" type="submit">Salvar</button>
-				</div>
-
-			</form>
-		</div>
-		
-		<div th:replace="style/fast-registration :: style-modal"></div>
-	</section>
 	
+	<head>
+		<title>Beer Register</title>
+	</head>
+
+	<body>
+		<section layout:fragment="content">
+	
+			<div class="page-header">
+				<div class="container-fluid">
+					<h1>Beer Register</h1>
+				</div>
+			</div>
+	
+			<div class="container-fluid">
+	
+				<!-- <div class="alert  alert-danger  alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<i class="fa  fa-exclamation-circle"></i> Já existe um produto com o nome informado.
+				</div> -->
+	
+				<form method="POST" th:object="${beer}" class="form-vertical  js-form-loading">
+			
+					<div class="row">
+						<div class="form-group col-sm-2">
+							<label for="sku">SKU</label>
+							<input id="sku" type="text" class="form-control"/>
+						</div> 
+						
+						<div class="form-group col-sm-10">
+							<label for="name">Name</label>
+							<input id="name" type="text" class="form-control"/>
+						</div>
+					</div>
+			
+					<div class="form-group">
+						<label for="description">Description</label>
+						<textarea id="description" rows="3" class="form-control"></textarea>
+					</div>
+	
+					<div class="row">
+						<div class="form-group col-sm-3">
+							<label for="style">Style</label>
+							<div class="bw-field-action">
+								<select id="style" class="form-control">
+									<option value="">Select style</option>
+								</select>
+								
+								<div class="bw-field-action-icon">
+									<a href="#" data-toggle="modal" data-target="#style-modal">
+										<i class="glyphicon glyphicon-plus-sign bw-glyphicon-large"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group col-sm-3">
+							<label for="flavor">Flavor</label>
+							<select id="flavor" class="form-control">
+								<option value="">Select flavor</option>
+							</select>
+						</div>
+						
+						<div class="form-group col-sm-3">
+							<label for="alcohol-content">Alcohol content</label>
+							<div class="input-group"> 
+								<input id="alcohol-content" type="text" class="form-control js-decimal"/>
+								<div class="input-group-addon">%</div>
+							</div>
+						</div>
+						
+						<div class="form-group col-lg-3 col-sm-6">
+							<label for="origin">Origin</label>
+							<div>
+								<div class="radio radio-inline">
+									<input type="radio" name="origin">
+									<label>National</label>
+								</div>
+								<div class="radio radio-inline">
+									<input type="radio" name="origin">
+									<label>International</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="form-group col-sm-3">
+							<label for="price">Price</label>
+							<div class="input-group"> 
+								<div class="input-group-addon">$</div>
+								<input id="price" type="text" class="form-control js-decimal"/>
+							</div>
+						</div>
+						
+						<div class="form-group col-sm-3">
+							<label for="commission">Commission</label>
+							<div class="input-group"> 
+								<input id="commission" type="text" class="form-control js-decimal"/>
+								<div class="input-group-addon">%</div>
+							</div>
+						</div>
+						
+						<div class="form-group col-sm-3">
+							<label for="stock">Stock</label>
+							<input id="stock" type="text" class="form-control js-plain"/>
+						</div> 
+					</div>
+					
+					<div class="form-group">
+						<button class="btn btn-primary" type="submit">Save</button>
+					</div>
+	
+				</form>
+			</div>
+			
+			<div th:replace="style/fast-registration :: style-modal"></div>
+		</section>
+	</body>
 </html>
