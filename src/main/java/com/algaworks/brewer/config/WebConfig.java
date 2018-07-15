@@ -18,6 +18,8 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import com.algaworks.brewer.controller.BeerController;
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
+
 @Configuration
 @ComponentScan(basePackageClasses = { BeerController.class })
 @EnableWebMvc
@@ -45,6 +47,7 @@ public class WebConfig implements WebMvcConfigurer {
 		SpringTemplateEngine springTemplateEngine = new SpringTemplateEngine();
 		springTemplateEngine.setEnableSpringELCompiler(true);
 		springTemplateEngine.setTemplateResolver(templateResolver());
+		springTemplateEngine.addDialect(new LayoutDialect());
 		
 		return springTemplateEngine;
 	}
