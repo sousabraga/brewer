@@ -10,29 +10,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.algaworks.brewer.model.City;
+import com.algaworks.brewer.model.Style;
 
 @Controller
-@RequestMapping("/city")
-public class CityController {
+@RequestMapping("/style")
+public class StyleController {
 	
 	@GetMapping("/new")
-	public ModelAndView newCity(City city, ModelAndView modelAndView) {
-		modelAndView.setViewName("city/city-register");
+	public ModelAndView newStyle(Style style, ModelAndView modelAndView) {
+		modelAndView.setViewName("style/style-register");
 		
 		return modelAndView;
 	}
 	
 	@PostMapping("/new")
-	public ModelAndView saveCity(@Valid City city, BindingResult bindingResult, ModelAndView modelAndView, RedirectAttributes redirectAttributes) {		
+	public ModelAndView saveStyle(@Valid Style style, BindingResult bindingResult, ModelAndView modelAndView, RedirectAttributes redirectAttributes) {		
 		if (bindingResult.hasErrors()) {
-			return newCity(city, modelAndView);
+			return newStyle(style, modelAndView);
 		}
 		
-		// TODO save the customer
-		System.out.println(city);
+		// TODO save the style
+		System.out.println(style);
 
-		redirectAttributes.addFlashAttribute("message", "City successfully saved!");
+		redirectAttributes.addFlashAttribute("message", "Style successfully saved!");
 		modelAndView.setViewName("redirect:new");
 
 		return modelAndView;
