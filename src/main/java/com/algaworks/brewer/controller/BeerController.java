@@ -29,7 +29,7 @@ public class BeerController {
 			return newBeer(beer, modelAndView);
 		}
 		
-		// TODO save the beeer
+		// TODO save the beer
 		System.out.println(beer);
 
 		redirectAttributes.addFlashAttribute("message", "Beer successfully saved!");
