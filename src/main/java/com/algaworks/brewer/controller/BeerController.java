@@ -15,7 +15,7 @@ import com.algaworks.brewer.model.Beer;
 @Controller
 @RequestMapping("/beer")
 public class BeerController {
-
+	
 	@GetMapping("/new")
 	public ModelAndView newBeer(Beer beer, ModelAndView modelAndView) {
 		modelAndView.setViewName("beer/beer-register");

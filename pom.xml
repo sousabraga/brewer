@@ -23,6 +23,9 @@
 		<!-- Spring MVC -->
 		<spring-framework.version>5.0.7.RELEASE</spring-framework.version>
 		
+		<!-- Spring Data JPA -->
+		<spring-data-jpa.version>2.0.9.RELEASE</spring-data-jpa.version>
+		
 		<!-- Servlet API -->
 		<servlet.version>3.1.0</servlet.version>
 		
@@ -91,6 +94,13 @@
 					<artifactId>commons-logging</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		
+		<!-- Spring Data JPA -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+        	<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data-jpa.version}</version>
 		</dependency>
 		
 		<!-- Servlet API -->
