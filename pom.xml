@@ -18,6 +18,7 @@
 		
 		<java.version>1.8</java.version>
 		<maven-compiler-pluging.version>3.2</maven-compiler-pluging.version>
+		<flyway-maven-plugin.version>5.1.4</flyway-maven-plugin.version>
 		
 		<!-- Spring MVC -->
 		<spring-framework.version>5.0.7.RELEASE</spring-framework.version>
@@ -31,12 +32,18 @@
 		<!-- Thymeleaf Layout Dialect -->
 		<thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
 		
+		<!-- JPA / Hibernate -->
+		<hibernate.version>5.2.17.Final</hibernate.version>
+		
 		<!-- Hibernate Validation (Bean Validation) -->
 		<hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
 		
 		<!-- Logging -->
 		<log4j.version>2.11.0</log4j.version>
-		<jcl-over-slf4j.version>1.7.25</jcl-over-slf4j.version>
+		<jcl-over-slf4j.version>1.7.25</jcl-over-slf4j.version>	
+		
+		<!-- MySQL JDBC Driver -->
+		<mysql-connector-java.version>8.0.11</mysql-connector-java.version>
 	</properties>
 	
 	<build>
@@ -47,6 +54,15 @@
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>${flyway-maven-plugin.version}</version>
+				<configuration>
+					<driver>com.mysql.jdbc.Driver</driver>
 				</configuration>
 			</plugin>
 		</plugins>	
@@ -105,6 +121,20 @@
 			<version>${thymeleaf-layout-dialect.version}</version>
 		</dependency>
 		
+		<!-- JPA / Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		
+		<!-- Hibernate - Java 8 support -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		
 		<!-- Hibernate Validation (Bean Validation) -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -135,6 +165,14 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>${jcl-over-slf4j.version}</version>
+		</dependency>
+		
+		<!-- MySQL JDBC Driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-connector-java.version}</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 

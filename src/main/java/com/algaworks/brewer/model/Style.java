@@ -1,15 +1,30 @@
 package com.algaworks.brewer.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "style")
 public class Style implements Serializable {
 
 	private static final long serialVersionUID = 6190832760329752479L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String name;
 
+	@OneToMany(mappedBy = "style")
+	private List<Beer> beers;
+	
 	public Long getId() {
 		return id;
 	}
@@ -24,6 +39,14 @@ public class Style implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public List<Beer> getBeers() {
+		return beers;
+	}
+
+	public void setBeers(List<Beer> beers) {
+		this.beers = beers;
 	}
 
 	@Override
