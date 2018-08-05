@@ -1,16 +1,22 @@
 package com.algaworks.brewer.config;
 
+import java.math.BigDecimal;
+import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.number.NumberStyleFormatter;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 import org.thymeleaf.spring5.ISpringTemplateEngine;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
@@ -67,10 +73,20 @@ public class WebConfig implements WebMvcConfigurer {
 	
 	@Bean
 	public FormattingConversionService mvcConversionService() {
+		NumberStyleFormatter bigDecimalFormatter = new NumberStyleFormatter("#,##0.00");
+		NumberStyleFormatter integerFormatter = new NumberStyleFormatter("#,##0");
+		
 		DefaultFormattingConversionService defaultFormattingConversionService = new DefaultFormattingConversionService();
 		defaultFormattingConversionService.addConverter(new StyleConverter());
+		defaultFormattingConversionService.addFormatterForFieldType(BigDecimal.class, bigDecimalFormatter);
+		defaultFormattingConversionService.addFormatterForFieldType(Integer.class, integerFormatter);
 		
 		return defaultFormattingConversionService;
+	}
+	
+	@Bean
+	public LocaleResolver localeResolver() {
+		return new FixedLocaleResolver(new Locale("en", "US"));
 	}
 	
 }
