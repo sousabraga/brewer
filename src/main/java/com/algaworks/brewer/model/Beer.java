@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.algaworks.brewer.validation.SKU;
+
 @Entity
 @Table(name = "beer")
 public class Beer implements Serializable {
@@ -26,6 +28,7 @@ public class Beer implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@SKU
 	@NotBlank(message = "SKU is required")
 	private String sku;
 	
