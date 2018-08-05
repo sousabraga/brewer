@@ -13,7 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.algaworks.brewer.validation.SKU;
@@ -38,22 +41,30 @@ public class Beer implements Serializable {
 	@Size(min = 1, max = 50, message = "Description must be between 1 and 50")
 	private String description;
 
+	@NotNull(message = "Price is required")
 	private BigDecimal price;
 	
+	@NotNull(message = "Alcohol content is required")
+	@DecimalMax(value = "100.0", message = "The alcohol content must be less than 100")
 	@Column(name = "alcohol_content")
 	private BigDecimal alcoholContent;
 	
+	@DecimalMax(value = "100.0", message = "The commission must be equal to or less than 100")
 	private BigDecimal commission;
-	
+
+	@Max(value = 5000, message = "The quantity in stock must be less than 5000")
 	@Column(name = "stock_quantity")
 	private Integer stockQuantity;
 
+	@NotNull(message = "Origin is required")
 	@Enumerated(EnumType.STRING)
 	private Origin origin;
 	
+	@NotNull(message = "Flavor is required")
 	@Enumerated(EnumType.STRING)
 	private Flavor flavor;
 	
+	@NotNull(message = "Style is required")
 	@ManyToOne
 	@JoinColumn(name = "style_id")
 	private Style style;
