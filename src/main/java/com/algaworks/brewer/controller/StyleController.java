@@ -2,6 +2,7 @@ package com.algaworks.brewer.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,10 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.algaworks.brewer.model.Style;
+import com.algaworks.brewer.service.StyleService;
 
 @Controller
 @RequestMapping("/style")
 public class StyleController {
+	
+	@Autowired
+	private StyleService styleService;
 	
 	@GetMapping("/new")
 	public ModelAndView newStyle(Style style, ModelAndView modelAndView) {
@@ -29,8 +34,7 @@ public class StyleController {
 			return newStyle(style, modelAndView);
 		}
 		
-		// TODO save the style
-		System.out.println(style);
+		styleService.save(style);
 
 		redirectAttributes.addFlashAttribute("successMessage", "Style successfully saved!");
 		modelAndView.setViewName("redirect:new");

@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "style")
@@ -20,6 +22,8 @@ public class Style implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotBlank(message = "Name is required")
+	@Size(max = 20, message = "Name must be equal to or less than 20")
 	private String name;
 
 	@OneToMany(mappedBy = "style")
