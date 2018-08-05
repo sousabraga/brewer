@@ -30,26 +30,27 @@
 					<div class="row">
 						<div class="form-group col-sm-2">
 							<label for="sku">SKU</label>
-							<input id="sku" type="text" class="form-control"/>
+							<input id="sku" type="text" class="form-control" th:field="*{sku}"/>
 						</div> 
 						
 						<div class="form-group col-sm-10">
 							<label for="name">Name</label>
-							<input id="name" type="text" class="form-control"/>
+							<input id="name" type="text" class="form-control" th:field="*{name}"/>
 						</div>
 					</div>
 			
 					<div class="form-group">
 						<label for="description">Description</label>
-						<textarea id="description" rows="3" class="form-control"></textarea>
+						<textarea id="description" rows="3" class="form-control" th:field="*{description}"></textarea>
 					</div>
 	
 					<div class="row">
 						<div class="form-group col-sm-3">
 							<label for="style">Style</label>
 							<div class="bw-field-action">
-								<select id="style" class="form-control">
+								<select id="style" class="form-control" th:field="*{style}">
 									<option value="">Select style</option>
+									<option th:each="style : ${styleList}" th:value="${style.id}" th:text="${style.name}"></option>
 								</select>
 								
 								<div class="bw-field-action-icon">
@@ -62,15 +63,16 @@
 						
 						<div class="form-group col-sm-3">
 							<label for="flavor">Flavor</label>
-							<select id="flavor" class="form-control">
+							<select id="flavor" class="form-control" th:field="*{flavor}">
 								<option value="">Select flavor</option>
+								<option th:each="flavor : ${flavorList}" th:value="${flavor}" th:text="${flavor.description}"></option>
 							</select>
 						</div>
 						
 						<div class="form-group col-sm-3">
 							<label for="alcohol-content">Alcohol content</label>
 							<div class="input-group"> 
-								<input id="alcohol-content" type="text" class="form-control js-decimal"/>
+								<input id="alcohol-content" type="text" class="form-control js-decimal" th:field="*{alcoholContent}"/>
 								<div class="input-group-addon">%</div>
 							</div>
 						</div>
@@ -78,14 +80,12 @@
 						<div class="form-group col-lg-3 col-sm-6">
 							<label for="origin">Origin</label>
 							<div>
-								<div class="radio radio-inline">
-									<input type="radio" name="origin">
-									<label>National</label>
-								</div>
-								<div class="radio radio-inline">
-									<input type="radio" name="origin">
-									<label>International</label>
-								</div>
+								<th:block th:each="origin : ${originList}">
+									<div class="radio radio-inline">
+										<input th:id="|${origin}_id|" type="radio" th:value="${origin}" th:field="*{origin}">
+										<label th:for="|${origin}_id|" th:text="${origin.description}"></label>
+									</div>
+								</th:block>
 							</div>
 						</div>
 					</div>
@@ -95,21 +95,21 @@
 							<label for="price">Price</label>
 							<div class="input-group"> 
 								<div class="input-group-addon">$</div>
-								<input id="price" type="text" class="form-control js-decimal"/>
+								<input id="price" type="text" class="form-control js-decimal" th:field="*{price}"/>
 							</div>
 						</div>
 						
 						<div class="form-group col-sm-3">
 							<label for="commission">Commission</label>
 							<div class="input-group"> 
-								<input id="commission" type="text" class="form-control js-decimal"/>
+								<input id="commission" type="text" class="form-control js-decimal" th:field="*{commission}"/>
 								<div class="input-group-addon">%</div>
 							</div>
 						</div>
 						
 						<div class="form-group col-sm-3">
-							<label for="stock">Stock</label>
-							<input id="stock" type="text" class="form-control js-plain"/>
+							<label for="stock-quantity">Stock Quantity</label>
+							<input id="stock-quantity" type="text" class="form-control js-plain" th:field="*{stockQuantity}"/>
 						</div> 
 					</div>
 					
