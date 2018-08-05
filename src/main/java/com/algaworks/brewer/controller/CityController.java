@@ -32,7 +32,7 @@ public class CityController {
 		// TODO save the customer
 		System.out.println(city);
 
-		redirectAttributes.addFlashAttribute("message", "City successfully saved!");
+		redirectAttributes.addFlashAttribute("successMessage", "City successfully saved!");
 		modelAndView.setViewName("redirect:new");
 
 		return modelAndView;

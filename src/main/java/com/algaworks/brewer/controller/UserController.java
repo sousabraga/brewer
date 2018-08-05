@@ -32,7 +32,7 @@ public class UserController {
 		// TODO save the user
 		System.out.println(user);
 
-		redirectAttributes.addFlashAttribute("message", "User successfully saved!");
+		redirectAttributes.addFlashAttribute("successMessage", "User successfully saved!");
 		modelAndView.setViewName("redirect:new");
 
 		return modelAndView;

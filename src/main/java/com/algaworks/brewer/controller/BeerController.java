@@ -38,7 +38,7 @@ public class BeerController {
 		
 		beerService.save(beer);
 		
-		redirectAttributes.addFlashAttribute("message", "Beer successfully saved!");
+		redirectAttributes.addFlashAttribute("successMessage", "Beer successfully saved");
 		modelAndView.setViewName("redirect:new");
 
 		return modelAndView;

@@ -32,7 +32,7 @@ public class StyleController {
 		// TODO save the style
 		System.out.println(style);
 
-		redirectAttributes.addFlashAttribute("message", "Style successfully saved!");
+		redirectAttributes.addFlashAttribute("successMessage", "Style successfully saved!");
 		modelAndView.setViewName("redirect:new");
 
 		return modelAndView;

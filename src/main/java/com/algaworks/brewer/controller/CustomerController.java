@@ -32,7 +32,7 @@ public class CustomerController {
 		// TODO save the customer
 		System.out.println(customer);
 
-		redirectAttributes.addFlashAttribute("message", "Customer successfully saved!");
+		redirectAttributes.addFlashAttribute("successMessage", "Customer successfully saved!");
 		modelAndView.setViewName("redirect:new");
 
 		return modelAndView;
