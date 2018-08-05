@@ -14,7 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -49,9 +51,13 @@ public class Beer implements Serializable {
 	@Column(name = "alcohol_content")
 	private BigDecimal alcoholContent;
 	
+	@NotNull(message = "Commission is required")
+	@DecimalMin(value = "5.00", message = "The commission must be equal to or greater than 5")
 	@DecimalMax(value = "100.0", message = "The commission must be equal to or less than 100")
 	private BigDecimal commission;
 
+	@NotNull(message = "Stock quantity is required")
+	@Min(value = 10, message = "The quantity in stock must be equal to or greater than 10")
 	@Max(value = 5000, message = "The quantity in stock must be less than 5000")
 	@Column(name = "stock_quantity")
 	private Integer stockQuantity;
