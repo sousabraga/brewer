@@ -3,7 +3,7 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 
-	<div class="modal fade" id="style-modal" tabindex="-1" role="dialog" th:fragment="style-modal">
+	<div class="modal fade" id="fast-registration" tabindex="-1" role="dialog" th:fragment="fast-registration">
 		<div class="modal-dialog modal-sm" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -14,7 +14,9 @@
 				</div>
 				
 				<div class="modal-body">
-					<form class="form-horizontal">
+					<form class="form-horizontal" th:action="@{/style/fast-registration}">
+						<div class="alert alert-danger hidden js-message-style-fast-registration" role="alert"></div>
+					
 						<div class="form-group">
 							<label class="col-sm-2 control-label" for="style-name">Name</label>
 							<div class="col-sm-10">
@@ -25,7 +27,7 @@
 				</div>
 				
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary">Save</button>
+					<button type="button" class="btn btn-primary js-style-fast-registration-save-btn">Save</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 				</div>
 			</div>

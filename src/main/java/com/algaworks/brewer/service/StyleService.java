@@ -17,13 +17,13 @@ public class StyleService {
 	private StyleRepository styleRepository;
 	
 	@Transactional
-	public void save(Style style) {
+	public Style save(Style style) {
 		Optional<Style> styleOptional = styleRepository.findByNameIgnoreCase(style.getName());
 		
 		if (styleOptional.isPresent()) 
 			throw new StyleAlreadyRegisteredException("Style already registered");
 		
-		styleRepository.save(style);
+		return styleRepository.saveAndFlush(style);
 	}
 	
 }

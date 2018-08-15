@@ -52,7 +52,7 @@
 								</select>
 								
 								<div class="bw-field-action-icon">
-									<a href="#" data-toggle="modal" data-target="#style-modal">
+									<a href="#" data-toggle="modal" data-target="#fast-registration">
 										<i class="glyphicon glyphicon-plus-sign bw-glyphicon-large"></i>
 									</a>
 								</div>
@@ -118,7 +118,11 @@
 				</form>
 			</div>
 			
-			<div th:replace="style/fast-registration :: style-modal"></div>
+			<div th:replace="style/fast-registration :: fast-registration"></div>
 		</section>
+		
+		<th:block layout:fragment="additional-javascript">
+			<script th:src="@{/javascripts/style.fast-registration.js}"></script>
+		</th:block>
 	</body>
 </html>
