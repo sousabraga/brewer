@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.algaworks.brewer.model.Style;
 import com.algaworks.brewer.service.StyleService;
+import com.algaworks.brewer.service.exception.StyleAlreadyRegisteredException;
 
 @Controller
 @RequestMapping("/style")
@@ -34,8 +35,14 @@ public class StyleController {
 			return newStyle(style, modelAndView);
 		}
 		
-		styleService.save(style);
-
+		try {
+			styleService.save(style);
+		} catch (StyleAlreadyRegisteredException e) {
+			bindingResult.rejectValue("name", e.getMessage(), e.getMessage());
+			
+			return newStyle(style, modelAndView);
+		}
+		
 		redirectAttributes.addFlashAttribute("successMessage", "Style successfully saved!");
 		modelAndView.setViewName("redirect:new");
 
