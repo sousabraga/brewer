@@ -16,14 +16,14 @@ import com.algaworks.brewer.model.Customer;
 @RequestMapping("/customer")
 public class CustomerController {
 
-	@GetMapping("/new")
+	@GetMapping
 	public ModelAndView newCustomer(Customer customer, ModelAndView modelAndView) {
 		modelAndView.setViewName("customer/customer-register");
 		
 		return modelAndView;
 	}
 	
-	@PostMapping("/new")
+	@PostMapping
 	public ModelAndView saveBeer(@Valid Customer customer, BindingResult bindingResult, ModelAndView modelAndView, RedirectAttributes redirectAttributes) {		
 		if (bindingResult.hasErrors()) {
 			return newCustomer(customer, modelAndView);
@@ -33,7 +33,7 @@ public class CustomerController {
 		System.out.println(customer);
 
 		redirectAttributes.addFlashAttribute("successMessage", "Customer successfully saved!");
-		modelAndView.setViewName("redirect:new");
+		modelAndView.setViewName("redirect:customer");
 
 		return modelAndView;
 	}

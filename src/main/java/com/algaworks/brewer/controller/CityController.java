@@ -16,14 +16,14 @@ import com.algaworks.brewer.model.City;
 @RequestMapping("/city")
 public class CityController {
 	
-	@GetMapping("/new")
+	@GetMapping
 	public ModelAndView newCity(City city, ModelAndView modelAndView) {
 		modelAndView.setViewName("city/city-register");
 		
 		return modelAndView;
 	}
 	
-	@PostMapping("/new")
+	@PostMapping
 	public ModelAndView saveCity(@Valid City city, BindingResult bindingResult, ModelAndView modelAndView, RedirectAttributes redirectAttributes) {		
 		if (bindingResult.hasErrors()) {
 			return newCity(city, modelAndView);
@@ -33,7 +33,7 @@ public class CityController {
 		System.out.println(city);
 
 		redirectAttributes.addFlashAttribute("successMessage", "City successfully saved!");
-		modelAndView.setViewName("redirect:new");
+		modelAndView.setViewName("redirect:city");
 
 		return modelAndView;
 	}

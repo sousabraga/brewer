@@ -25,14 +25,14 @@ public class StyleController {
 	@Autowired
 	private StyleService styleService;
 	
-	@GetMapping("/new")
+	@GetMapping
 	public ModelAndView newStyle(Style style, ModelAndView modelAndView) {
 		modelAndView.setViewName("style/style-register");
 		
 		return modelAndView;
 	}
 	
-	@PostMapping("/new")
+	@PostMapping
 	public ModelAndView saveStyle(@Valid Style style, BindingResult bindingResult, ModelAndView modelAndView, RedirectAttributes redirectAttributes) {		
 		if (bindingResult.hasErrors()) 
 			return newStyle(style, modelAndView);
@@ -46,7 +46,7 @@ public class StyleController {
 		}
 		
 		redirectAttributes.addFlashAttribute("successMessage", "Style successfully saved!");
-		modelAndView.setViewName("redirect:new");
+		modelAndView.setViewName("redirect:style");
 
 		return modelAndView;
 	}

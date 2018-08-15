@@ -21,7 +21,7 @@ public class BeerController {
 	@Autowired
 	private BeerService beerService;
 	
-	@GetMapping("/new")
+	@GetMapping
 	public ModelAndView newBeer(Beer beer, ModelAndView modelAndView) {
 		modelAndView.setViewName("beer/beer-register");
 		
@@ -30,7 +30,7 @@ public class BeerController {
 		return modelAndView;
 	}
 	
-	@PostMapping("/new")
+	@PostMapping
 	public ModelAndView saveBeer(@Valid Beer beer, BindingResult bindingResult, ModelAndView modelAndView, RedirectAttributes redirectAttributes) {		
 		if (bindingResult.hasErrors()) {
 			return newBeer(beer, modelAndView);
@@ -39,7 +39,7 @@ public class BeerController {
 		beerService.save(beer);
 		
 		redirectAttributes.addFlashAttribute("successMessage", "Beer successfully saved");
-		modelAndView.setViewName("redirect:new");
+		modelAndView.setViewName("redirect:beer");
 
 		return modelAndView;
 	}

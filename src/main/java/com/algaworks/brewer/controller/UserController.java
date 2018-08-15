@@ -16,14 +16,14 @@ import com.algaworks.brewer.model.User;
 @RequestMapping("/user")
 public class UserController {
 	
-	@GetMapping("/new")
+	@GetMapping
 	public ModelAndView newUser(User user, ModelAndView modelAndView) {
 		modelAndView.setViewName("user/user-register");
 		
 		return modelAndView;
 	}
 	
-	@PostMapping("/new")
+	@PostMapping
 	public ModelAndView saveUser(@Valid User user, BindingResult bindingResult, ModelAndView modelAndView, RedirectAttributes redirectAttributes) {		
 		if (bindingResult.hasErrors()) {
 			return newUser(user, modelAndView);
@@ -33,7 +33,7 @@ public class UserController {
 		System.out.println(user);
 
 		redirectAttributes.addFlashAttribute("successMessage", "User successfully saved!");
-		modelAndView.setViewName("redirect:new");
+		modelAndView.setViewName("redirect:user");
 
 		return modelAndView;
 	}
