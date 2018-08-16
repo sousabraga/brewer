@@ -55,13 +55,9 @@ public class StyleController {
 	public ResponseEntity<?> saveStyleThroughFastRegistration(@RequestBody @Valid Style style, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) 
 			return ResponseEntity.badRequest().body(bindingResult.getFieldError("name").getDefaultMessage());
-		
-		try {
-			style = styleService.save(style);
-		} catch (StyleAlreadyRegisteredException e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
-		}
-	
+
+		style = styleService.save(style);
+
 		return ResponseEntity.ok(style);
 	}
 
