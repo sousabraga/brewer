@@ -1,9 +1,22 @@
-$(function() {
-	var decimal = $('.js-decimal');
-	decimal.maskMoney();
+var Brewer = Brewer || {};
+
+Brewer.MaskMoney = (function() {
 	
-	var plain = $('.js-plain');
-	plain.maskMoney({
-		precision: 0
-	});
+	function MaskMoney() {
+		this.decimal = $('.js-decimal');
+		this.plain = $('.js-plain');
+	}
+	
+	MaskMoney.prototype.enable = function() {
+		this.decimal.maskMoney();		
+		this.plain.maskMoney({ precision: 0 });
+	} 
+	
+	return MaskMoney;
+	
+})();
+
+$(function() {
+	var maskMoney = new Brewer.MaskMoney();
+	maskMoney.enable();
 });
