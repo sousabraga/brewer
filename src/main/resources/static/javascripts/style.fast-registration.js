@@ -68,7 +68,7 @@ Brewer.StyleFastRegistration = (function() {
 	
 })();
 
-$(function()) {
+$(function() {
 	var styleFastRegistration = new Brewer.StyleFastRegistration();
 	styleFastRegistration.init();
 });
