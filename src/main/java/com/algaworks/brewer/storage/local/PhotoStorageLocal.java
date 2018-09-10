@@ -55,6 +55,16 @@ public class PhotoStorageLocal implements PhotoStorage {
 		return newFileName;
 	}
 	
+	@Override
+	public byte[] getTemporaryPhoto(String name) {
+		try {
+			return Files.readAllBytes(temporaryPath.resolve(name));
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new RuntimeException("Error in reading temporary photo", e);
+		}
+	}
+	
 	private void createFolders() {
 		try {
 			Files.createDirectories(localPath);

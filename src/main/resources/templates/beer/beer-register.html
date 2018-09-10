@@ -118,16 +118,16 @@
 							<input type="hidden" th:field="*{photo}"/>
 							<input type="hidden" th:field="*{contentType}"/>
 							
-							<div class="js-upload uk-placeholder uk-text-center">
-								<span uk-icon="icon: cloud-upload"></span>
-							    <span class="uk-text-middle">Attach photos by dropping them here or</span>
-							    <div uk-form-custom>
-							        <input type="file" accept=".jpg,.jpeg,.png">
-							        <span class="uk-link">selecting one</span>
-							    </div>
-							</div>
-							
-							<progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress> 					
+							<div class="js-container-beer-photo" th:attr="data-url-photo=@{/photo}">
+								<div id="upload-component" class="js-upload uk-placeholder uk-text-center">
+									<span uk-icon="icon: cloud-upload"></span>
+								    <span class="uk-text-middle">Attach photos by dropping them here or</span>
+								    <div uk-form-custom>
+								        <input type="file" accept=".jpg,.jpeg,.png">
+								        <span class="uk-link">selecting one</span>
+								    </div>
+								</div>
+							</div>										
 						</div>
 					</div>
 					
@@ -139,88 +139,16 @@
 			</div>
 			
 			<div th:replace="style/fast-registration :: fast-registration"></div>
+			
+			<th:block th:replace="handlebars/beer-photo"></th:block>
 		</section>
 		
 		<th:block layout:fragment="additional-javascript">
 			<script th:src="@{/javascripts/style.fast-registration.js}"></script>
 			<script th:src="@{/javascripts/vendors/uikit.min.js}"></script>
 			<script th:src="@{/javascripts/vendors/uikit-icons.min.js}"></script>
-			
-			<script>
-			    var bar = document.getElementById('js-progressbar');
-			
-			    UIkit.upload('.js-upload', {
-			
-			        url: '/brewer/photo',
-			        type: 'json',
-			        filelimit: 1,
-			        multiple: false,
-			        allow: '*.(jpg|jpeg|png)',
-			
-			        beforeSend: function (environment) {
-			            console.log('beforeSend', arguments);
-			
-			            // The environment object can still be modified here. 
-			            // var {data, method, headers, xhr, responseType} = environment;
-			
-			        },
-			        
-			        beforeAll: function () {
-			            console.log('beforeAll', arguments);
-			        },
-			        
-			        load: function () {
-			            console.log('load', arguments);
-			        },
-			        
-			        error: function () {
-			            console.log('error', arguments);
-			        },
-			        
-			        complete: function (XMLHttpRequest) {
-			            console.log(XMLHttpRequest);
-			            
-			            var response = XMLHttpRequest.response;
-			            
-			            console.log('response', response);
-			            
-			            $('input[name=photo]').val(response.name);
-			            $('input[name=contentType]').val(response.contentType);
-			        },
-			
-			        loadStart: function (e) {
-			            console.log('loadStart', arguments);
-			
-			            bar.removeAttribute('hidden');
-			            bar.max = e.total;
-			            bar.value = e.loaded;
-			        },
-			
-			        progress: function (e) {
-			            console.log('progress', arguments);
-			
-			            bar.max = e.total;
-			            bar.value = e.loaded;
-			        },
-			
-			        loadEnd: function (e) {
-			            console.log('loadEnd', arguments);
-			
-			            bar.max = e.total;
-			            bar.value = e.loaded;
-			        },
-			
-			        completeAll: function () {
-			            console.log('completeAll', arguments);
-			
-			            setTimeout(function () {
-			                bar.setAttribute('hidden', 'hidden');
-			            }, 1000);
-			        }
-			
-			    });
-			
-			</script>
+			<script th:src="@{/javascripts/vendors/handlebars.min.js}"></script>
+			<script th:src="@{/javascripts/beer.upload-photo.js}"></script>
 		</th:block>
 	</body>
 </html>
