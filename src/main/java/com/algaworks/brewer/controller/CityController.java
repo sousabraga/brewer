@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.algaworks.brewer.model.City;
 
 @Controller
-@RequestMapping("/city")
+@RequestMapping("/cities")
 public class CityController {
 	
 	@GetMapping
@@ -33,7 +33,7 @@ public class CityController {
 		System.out.println(city);
 
 		redirectAttributes.addFlashAttribute("successMessage", "City successfully saved!");
-		modelAndView.setViewName("redirect:city");
+		modelAndView.setViewName("redirect:cities");
 
 		return modelAndView;
 	}

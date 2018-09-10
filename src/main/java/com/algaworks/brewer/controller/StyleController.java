@@ -19,7 +19,7 @@ import com.algaworks.brewer.service.StyleService;
 import com.algaworks.brewer.service.exception.StyleAlreadyRegisteredException;
 
 @Controller
-@RequestMapping("/style")
+@RequestMapping("/styles")
 public class StyleController {
 	
 	@Autowired
@@ -46,7 +46,7 @@ public class StyleController {
 		}
 		
 		redirectAttributes.addFlashAttribute("successMessage", "Style successfully saved!");
-		modelAndView.setViewName("redirect:style");
+		modelAndView.setViewName("redirect:styles");
 
 		return modelAndView;
 	}

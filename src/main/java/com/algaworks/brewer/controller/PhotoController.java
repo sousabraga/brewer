@@ -15,7 +15,7 @@ import com.algaworks.brewer.storage.PhotoStorage;
 import com.algaworks.brewer.storage.PhotoStorageRunnable;
 
 @RestController
-@RequestMapping("/photo")
+@RequestMapping("/photos")
 public class PhotoController {
 	
 	@Autowired

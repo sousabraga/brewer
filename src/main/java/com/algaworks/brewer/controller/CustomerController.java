@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.algaworks.brewer.model.Customer;
 
 @Controller
-@RequestMapping("/customer")
+@RequestMapping("/customers")
 public class CustomerController {
 
 	@GetMapping
@@ -33,7 +33,7 @@ public class CustomerController {
 		System.out.println(customer);
 
 		redirectAttributes.addFlashAttribute("successMessage", "Customer successfully saved!");
-		modelAndView.setViewName("redirect:customer");
+		modelAndView.setViewName("redirect:customers");
 
 		return modelAndView;
 	}

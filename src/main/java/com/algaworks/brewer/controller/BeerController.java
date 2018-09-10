@@ -15,7 +15,7 @@ import com.algaworks.brewer.model.Beer;
 import com.algaworks.brewer.service.BeerService;
 
 @Controller
-@RequestMapping("/beer")
+@RequestMapping("/beers")
 public class BeerController {
 	
 	@Autowired
@@ -39,7 +39,7 @@ public class BeerController {
 		beerService.save(beer);
 		
 		redirectAttributes.addFlashAttribute("successMessage", "Beer successfully saved");
-		modelAndView.setViewName("redirect:beer");
+		modelAndView.setViewName("redirect:beers");
 
 		return modelAndView;
 	}
